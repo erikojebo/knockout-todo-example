@@ -1,6 +1,6 @@
 ﻿var todo = todo || {};
 
-todo.server = function () {
+todo.server = (function () {
     var todoUrl = todo.url("api/todo");
     
     var getAllItems = function(success) {
@@ -39,4 +39,4 @@ todo.server = function () {
         remove: remove,
         add: add
     };
-}();
+})();
