@@ -7,6 +7,7 @@ namespace KnockoutTodoExample.Models
         public TodoItem()
         {
             Id = Guid.NewGuid();
+            AddedDate = DateTime.Now;
         }
 
         public TodoItem(string description) : this()
@@ -17,5 +18,6 @@ namespace KnockoutTodoExample.Models
         public string Description { get; set; }
         public bool IsDone { get; set; }
         public Guid Id { get; set; }
+        public DateTime AddedDate { get; set; }
     }
 }

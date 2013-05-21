@@ -263,6 +263,7 @@
     <Content Include="Scripts\todo\init.js" />
     <Content Include="Scripts\todo\server.js" />
     <Content Include="Scripts\todo\todolistviewmodel.js" />
+    <Content Include="Sql\CreateDatabase.sql" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

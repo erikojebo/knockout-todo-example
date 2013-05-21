@@ -8,11 +8,13 @@ namespace KnockoutTodoExample.Controllers
 {
     public class TodoController : ApiController
     {
-        readonly Repository _repository = new Repository();
+        private readonly Repository _repository = new Repository();
 
         public IEnumerable<TodoItem> Get()
         {
-            return _repository.Find<TodoItem>().ExecuteList();
+            return _repository.Find<TodoItem>()
+                              .OrderBy(x => x.AddedDate)
+                              .ExecuteList();
         }
 
         public TodoItem Get(Guid id)
@@ -20,19 +22,19 @@ namespace KnockoutTodoExample.Controllers
             return _repository.Find<TodoItem>().Where(x => x.Id == id).Execute();
         }
 
-        public TodoItem Post([FromBody]TodoItem item)
+        public TodoItem Post([FromBody] TodoItem item)
         {
             _repository.Insert(item);
 
             return item;
         }
 
-        public void Put([FromBody]TodoItem item)
+        public void Put([FromBody] TodoItem item)
         {
             _repository.Update<TodoItem>()
-                .Set(x => x.IsDone, item.IsDone)
-                .Where(x => x.Id == item.Id)
-                .Execute();
+                       .Set(x => x.IsDone, item.IsDone)
+                       .Where(x => x.Id == item.Id)
+                       .Execute();
         }
 
         public void Delete(Guid id)
