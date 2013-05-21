@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
-using KnockoutTodoExample.App_Start;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 namespace KnockoutTodoExample
 {
@@ -33,7 +33,7 @@ namespace KnockoutTodoExample
         {
             var settings = new JsonSerializerSettings
                 {
-                    ContractResolver = new LowercaseContractResolver()
+                    ContractResolver = new CamelCasePropertyNamesContractResolver()
                 };
 
             config.Formatters.JsonFormatter.SerializerSettings = settings;
