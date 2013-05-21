@@ -1,0 +1,21 @@
+﻿.isDone {
+    text-decoration: line-through;
+}
+
+li {
+    font-size: 20px;
+    cursor: pointer
+}
+
+li a {
+    margin-left: 10px;
+    display: none;
+}
+
+li:hover a {
+    display: inline-block;
+}
+
+li span {
+    display: inline-block;
+}

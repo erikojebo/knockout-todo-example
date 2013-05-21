@@ -1,0 +1,40 @@
+﻿<html>
+    <head>
+        <title>Knockout.js TODO list example</title>
+        <link href="~/Content/Site.css" rel="stylesheet" />        
+    </head>
+    <body>
+        @Html.ActionLink("Create test data", "CreateItems")
+        @Html.ActionLink("Clear list", "DeleteItems")
+
+        <h1 data-bind="text: title"></h1>
+        
+        <form data-bind="submit: addItemFromForm">
+            <input type="text" name="description" />
+            <input type="submit" value="Add">
+        </form>
+
+        <section>
+            <ul data-bind="foreach: items">
+                <li data-bind="click: toggleIsDone">
+                    <span data-bind="text: description, css: { isDone: isDone }"></span>
+                    <a href="#" data-bind="click: $parent.removeItem">x</a>
+                </li>
+            </ul>
+        </section>
+
+        <script type="text/javascript">
+            var todo = todo || {};
+
+            todo.url = function (url) {
+                return "@Url.Content("~/")" + url;
+            };
+        </script>
+        <script type="text/javascript" src="@Url.Content("~/Scripts/jquery-1.8.2.js")"></script>
+        <script type="text/javascript" src="@Url.Content("~/Scripts/knockout-2.2.0.debug.js")"></script>
+        <script type="text/javascript" src="@Url.Content("~/Scripts/todo/server.js")"></script>
+        <script type="text/javascript" src="@Url.Content("~/Scripts/todo/todolistviewmodel.js")"></script>
+        <script type="text/javascript" src="@Url.Content("~/Scripts/todo/todoitemviewmodel.js")"></script>
+        <script type="text/javascript" src="@Url.Content("~/Scripts/todo/init.js")"></script>
+    </body>
+</html>
